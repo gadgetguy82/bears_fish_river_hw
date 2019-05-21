@@ -10,10 +10,14 @@ class RiverTest < MiniTest::Test
     @fish1 = Fish.new("Nemo")
     @fish2 = Fish.new("Clown")
     @fish3 = Fish.new("Dory")
+    @river.add_to_river(@fish1)
+    @river.add_to_river(@fish2)
+    @river.add_to_river(@fish3)
 
     @river2 = River.new("Nile")
     @river2.add_to_river(@fish1)
     @river2.add_to_river(@fish2)
+
   end
 
   def test_get_river_name
@@ -21,9 +25,6 @@ class RiverTest < MiniTest::Test
   end
 
   def test_add_fish_to_river
-    @river.add_to_river(@fish1)
-    @river.add_to_river(@fish2)
-    @river.add_to_river(@fish3)
     assert_equal([@fish1, @fish2, @fish3], @river.fish_list)
   end
 
@@ -31,4 +32,8 @@ class RiverTest < MiniTest::Test
     assert_equal(2, @river2.fish_count)
   end
 
+  def test_remove_fish_from_river
+    @river.remove_fish(@fish3)
+    assert_equal(2, @river.fish_count)
+  end
 end

@@ -13,4 +13,8 @@ class River
   def fish_count
     return fish_list.length
   end
+
+  def remove_fish(fish)
+    @fish_list.delete(fish)
+  end
 end
